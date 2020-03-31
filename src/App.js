@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+//import Box Component
+import Box from './components/Box';
+//import Buttons Component
+import Buttons from './components/Buttons';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+  state = {
+    count: 0
+  }
+  //Step 1: create the function
+  handleAdd = () => {
+    //Step 5: 
+      this.setState({
+        count : this.state.count + 1
+      });
+  }
+
+  handleSubtract = () => {
+    this.setState({
+      count: this.state.count -1
+    });
+
+  }
+
+  handleReset = () => {
+    this.setState({
+      count: 0
+    });
+  }
+
+
+  handleMultiply = () => {
+    this.setState({
+      count: this.state.count * 2
+    });
+  }
+ 
+    render() {
+      return(
+          <React.Fragment>
+            <Box 
+              count = { this.state.count }
+            />
+
+            <Buttons 
+              //Step 2: 
+              handleAdd = { this.handleAdd }
+              handleSubtract = { this.handleSubtract }
+              handleReset = { this.handleReset }
+              handleMultiply = { this.handleMultiply }
+            />
+          </React.Fragment>
+        )
+    }
 }
 
 export default App;
